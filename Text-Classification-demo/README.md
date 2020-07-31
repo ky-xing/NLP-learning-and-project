@@ -107,5 +107,7 @@ RNN采用LSTM层，训练速度较慢，迭代28轮次，验证集准确率只�
 另外，还可以进一步调整参数，以获得更好的结果。
 ## 参考资料
 1.[text-classification-cnn-rnn](https://github.com/gaussic/text-classification-cnn-rnn)
+
 2.[Convolutional Neural Networks for Sentence Classification](https://arxiv.org/abs/1408.5882)
-3.[理解LSTM网络](
+
+3.[理解LSTM网络](https://blog.csdn.net/juanjuan1314/article/details/52020607)
