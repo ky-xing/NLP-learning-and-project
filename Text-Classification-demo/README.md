@@ -105,3 +105,7 @@ RNN采用LSTM层，训练速度较慢，迭代28轮次，验证集准确率只�
 由于本次训练数据生成的是字符级的文本，CNN网络的表现比RNN要好，RNN要获得较好的结果需要更长的训练时间。
 
 另外，还可以进一步调整参数，以获得更好的结果。
+## 参考资料
+1.[text-classification-cnn-rnn](https://github.com/gaussic/text-classification-cnn-rnn)
+2.[Convolutional Neural Networks for Sentence Classification](https://arxiv.org/abs/1408.5882)
+3.[理解LSTM网络](
