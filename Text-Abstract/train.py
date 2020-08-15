@@ -2,7 +2,7 @@ import tensorflow as tf
 import os
 import time
 import numpy as np
-from Seq2seq_model import Encoder,Decoder
+from Seq2seq_model import Encoder,Decoder,Attention
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -118,3 +118,5 @@ if __name__ == '__main__':
     loss_object = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True, reduction='none')
     train_model(train_X, train_Y, BATCH_SIZE)
 
+    import pickle
+    
