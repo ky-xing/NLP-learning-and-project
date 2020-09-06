@@ -118,5 +118,4 @@ if __name__ == '__main__':
     loss_object = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True, reduction='none')
     train_model(train_X, train_Y, BATCH_SIZE)
 
-    import pickle
     
