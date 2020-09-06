@@ -44,7 +44,11 @@ def data_process(data,task):
     print('word2vec_model Saved!')
     ##获取词表+索引
     vocab = {word: index for index, word in enumerate(wv_model.wv.index2word)}
-
+    with open(path,'w',encoding='utf-8') as f:
+        for word,index in vocab.items():
+            index = str(index)
+            f.write(word+' '+index+'\n')
+        f.close()
     
 
     train_x = data['item'].apply(lambda x: transform_data(x, vocab))
