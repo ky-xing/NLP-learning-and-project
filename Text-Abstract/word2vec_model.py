@@ -117,7 +117,7 @@ def transform_data(sentence, vocab):
     ids = [vocab[word] if word in vocab else vocab['<UNK>'] for word in words]
     return ids
 
-# 将词转换成索引  [<START> 广东省 人大 常委会 ...] -> [32800, 403, 986, 246, 231]
+# 将词转换成索引  [<START> 我 爱 北京 天安门 ...] -> [32800, 403, 986, 246, 231]
 train_id_x = train_data['X'].apply(lambda x: transform_data(x, vocab))
 train_id_y = train_data['Y'].apply(lambda x: transform_data(x, vocab))
 test_id_x = test_data['X'].apply(lambda x: transform_data(x, vocab))
