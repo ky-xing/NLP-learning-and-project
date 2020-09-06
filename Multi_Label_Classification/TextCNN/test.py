@@ -21,4 +21,5 @@ def test(model,x_test,y_test):
 if __name__ == '__main__':
     x_train,x_valid,x_test,y_train,y_valid,y_test = load_text_data(95)
     model = load_model('./data/TextCNN_model.h5')
+    #model = load_model('./data/Transformer_model.h5')
     test(model,x_test,y_test)
