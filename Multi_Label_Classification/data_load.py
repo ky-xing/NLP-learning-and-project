@@ -7,13 +7,13 @@ from tqdm import tqdm
 import warnings
 warnings.filterwarnings('ignore')
 
+
 ##三级标签
-grades = ['高中']
-classes = ['历史','地理','生物','政治']
-categories = {  '地理':['地球与地图','宇宙中的地球','生产活动与地域联系','人口与城市','区域可持续发展'],
-                '历史':['古代史', '近代史', '现代史'],
-                '生物':['现代生物技术专题','生物科学与社会','生物技术实践','稳态与环境','遗传与进化','分子与细胞'],
-                '政治':['经济学常识', '科学思维常识', '生活中的法律常识','科学社会主义常识','公民道德与伦理常识','时事政治']
+grades = ['用户评论']
+classes = ['商品种类','用户群体','评论情绪','评论标签']
+categories = {  '商品种类':['服饰','数码产品','日用化妆品','食品',''],
+                '用户群体':['儿童', '女性', '老年人'],
+                '评论情绪':['好评','中评','差评']
               }
 
 
@@ -35,9 +35,9 @@ for grade in grades:
             data = data.sort_values(by='web-scraper-order')
             
             data['item'] = data.item.apply(lambda x: ''.join(x.split()))
-            data['labels'] = data.item.apply(lambda x: [grade,class_, category]+x[x.index('[知识点：]')+6:].split(',') if x.find('[知识点：]')!=-1 else [grade, class_, category])
-            data['item'] = data.item.apply(lambda x:  x.replace('[题目]', ''))
-            data['item'] = data.item.apply(lambda x:  x[:x.index('题型')] if x.index('题型') else x)
+            data['labels'] = data.item.apply(lambda x: [grade,class_, category]+x[x.index('[商品标签：]')+6:].split(',') if x.find('[商品标签：]')!=-1 else [grade, class_, category])
+            data['item'] = data.item.apply(lambda x:  x.replace('[评论]', ''))
+            data['item'] = data.item.apply(lambda x:  x[:x.index('评价信息')] if x.index('评价信息') else x)
             
             data = data[['item','labels']]
             all_data = all_data.append(data)
@@ -45,7 +45,7 @@ for grade in grades:
 print('Data Size:',len(all_data))
 
 
-### 存在大量含知识点标签的样本数量较少，为提高模型的分类效果，需要对样本进行过滤，将知识点较少的样本过滤掉
+### 存在大量含标签的样本数量较少，为提高模型的分类效果，需要对样本进行过滤，将知识点较少的样本过滤掉
 
 min_samples = 300  ###最小样本数量调整，可以获得含有不同数量标签的数据
     #减小样本数量，标签数量增加，可根据实际情况调整
@@ -105,7 +105,7 @@ def save(data,type):
         # shuffle
         data = data.sample(frac=1)
 
-        file = os.path.join(root, f'baidu_{LABEL_NUM}{profix}.txt')
+        file = os.path.join(root, f'data_{LABEL_NUM}{profix}.txt')
 
         with open(file, 'w',encoding='utf-8') as f:
             for index, row in data.iterrows():
