@@ -24,7 +24,6 @@
 
 ```python
 │─data
-    │─高中.zip  #数据源
     │─hit_stopwords.txt  #哈工大停用词表
 	|-vocab.txt #词表
 	|-x_95.npy	#处理后的文本索引序列
